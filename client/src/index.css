@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Dark mode root styles (Primary Brand Identity) */
+  html.dark body {
+    background-color: #030712;
+    color: #f8fafc;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(239, 68, 68, 0.09) 0px, transparent 45%),
+      radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.85) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Soft Medical Light Mode root styles */
+  html.light body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(239, 68, 68, 0.05) 0px, transparent 40%),
+      radial-gradient(at 100% 100%, rgba(203, 213, 225, 0.5) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Button press feedback micro-interaction */
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+/* Glassmorphism Panels for Dark Mode */
+html.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.dark .glass-card {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark .glass-card:hover {
+  background: rgba(30, 41, 59, 0.65);
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.22);
+  transform: translateY(-2px);
+}
+
+html.dark .glass-input {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+html.dark .glass-input:focus {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  background: rgba(15, 23, 42, 0.95);
+  outline: none;
+}
+
+/* Glassmorphism Panels for Soft Medical Light Mode */
+html.light .glass-panel {
+  background: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.06);
+}
+
+html.light .glass-card {
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 10px 24px -6px rgba(239, 68, 68, 0.15);
+  transform: translateY(-2px);
+}
+
+html.light .glass-input {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease-in-out;
+}
+
+html.light .glass-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+html.light .glass-input:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18) !important;
+  outline: none;
+}
+
+/* Light Theme Contrast & Readability Enhancements */
+html.light h1:not([class*="text-brand"]):not([class*="text-red"]),
+html.light h2:not([class*="text-brand"]):not([class*="text-red"]),
+html.light h3:not([class*="text-brand"]):not([class*="text-red"]),
+html.light h4:not([class*="text-brand"]):not([class*="text-red"]) {
+  color: #0f172a;
+}
+
+html.light .text-white:not(button):not(.bg-brand-primary):not([class*="bg-brand"]):not([class*="bg-red"]):not(.badge) {
+  color: #0f172a;
+}
+
+html.light button.text-white,
+html.light .bg-brand-primary .text-white,
+html.light .bg-red-600 .text-white {
+  color: #ffffff !important;
+}
+
+html.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-700,
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-clinical-border {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-950,
+html.light .bg-navy-950,
+html.light .bg-navy-900 {
+  background-color: #f8fafc !important;
+  color: #0f172a;
+}
+
+html.light .bg-slate-800,
+html.light .bg-navy-800 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b;
+  border-color: #cbd5e1;
+}
+
+html.light .bg-slate-800:hover,
+html.light .bg-navy-800:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a;
+}
+
+html.light .bg-slate-900\/80 {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+html.light nav a {
+  color: #334155;
+}
+
+html.light nav a:hover {
+  color: #ef4444;
+}
+
+html.light nav a.bg-brand-primary {
+  color: #ffffff !important;
+}
+
+/* Light Theme Tables */
+html.light table th {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+  border-color: #e2e8f0 !important;
+  font-weight: 700;
+}
+
+html.light table td {
+  border-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+html.light table tr:hover td {
+  background-color: #f8fafc !important;
+}
+
+/* Light Theme Alerts & Status Pills */
+html.light .bg-red-500\/10 {
+  background-color: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #b91c1c !important;
+}
+
+html.light .bg-green-500\/10 {
+  background-color: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+  color: #15803d !important;
+}
+
+html.light .bg-blue-500\/10 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+html.light .bg-amber-500\/10 {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+/* Light Theme Chatbot & QR */
+html.light .chatbot-bubble-ai {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light .chatbot-bubble-user {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+html.light select,
+html.light input[type="text"],
+html.light input[type="email"],
+html.light input[type="password"],
+html.light input[type="tel"],
+html.light input[type="number"],
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Premium text gradient */
+html.dark .text-gradient-red {
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 50%, #fca5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .text-gradient-red {
+  background: linear-gradient(135deg, #0f172a 0%, #dc2626 70%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Neon Elements */
+.neon-glow-red {
+  box-shadow: 0 0 20px 2px rgba(239, 68, 68, 0.25);
+}
+
+.neon-glow-green {
+  box-shadow: 0 0 20px 2px rgba(34, 197, 94, 0.25);
+}
+
+/* Medical ECG and Heartbeat Animations */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.12); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes bloodDrop {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(4px) scale(0.95); }
+}
+
+.animate-blood-drop {
+  animation: bloodDrop 2.5s ease-in-out infinite;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
