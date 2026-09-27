@@ -73,26 +73,28 @@ app.get('/api', (req, res) => {
 // Centralized error handling middleware
 app.use(errorHandler);
 
-// Start server
-app.listen(config.port, async () => {
-  console.log(`========================================================`);
-  console.log(`🚀 DonorSync Clinical API Gateway initialized`);
-  console.log(`📡 Port: ${config.port}`);
-  console.log(`⚙️  Mode: ${config.appMode.toUpperCase()}`);
-  
-  const dbHealth = await checkSupabaseHealth();
-  if (dbHealth.reachable) {
-    console.log(`✅ Supabase PostgreSQL: CONNECTED`);
-  } else {
-    if (isProduction) {
-      console.warn(`🚨 WARNING (PRODUCTION): Supabase database is unreachable!`);
-      console.warn(`   Error: ${dbHealth.error}`);
+// Start server only when running locally / standalone (not in Vercel serverless environment)
+if (!process.env.VERCEL) {
+  app.listen(config.port, async () => {
+    console.log(`========================================================`);
+    console.log(`🚀 DonorSync Clinical API Gateway initialized`);
+    console.log(`📡 Port: ${config.port}`);
+    console.log(`⚙️  Mode: ${config.appMode.toUpperCase()}`);
+    
+    const dbHealth = await checkSupabaseHealth();
+    if (dbHealth.reachable) {
+      console.log(`✅ Supabase PostgreSQL: CONNECTED`);
     } else {
-      console.log(`ℹ️  Supabase host offline. Active Mode: STATEFUL DEMO REPOSITORY`);
-      console.log(`   (Full features active for development, matching, testing & presentation)`);
+      if (isProduction) {
+        console.warn(`🚨 WARNING (PRODUCTION): Supabase database is unreachable!`);
+        console.warn(`   Error: ${dbHealth.error}`);
+      } else {
+        console.log(`ℹ️  Supabase host offline. Active Mode: STATEFUL DEMO REPOSITORY`);
+        console.log(`   (Full features active for development, matching, testing & presentation)`);
+      }
     }
-  }
-  console.log(`========================================================`);
-});
+    console.log(`========================================================`);
+  });
+}
 
 export default app;

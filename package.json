@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Root package runner for DonorSync Blood Management System",
   "main": "server/server.js",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "install-all": "npm install && npm install --prefix server && npm install --prefix client",
     "server": "npm start --prefix server",
