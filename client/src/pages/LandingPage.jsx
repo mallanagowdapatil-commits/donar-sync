@@ -302,9 +302,9 @@ export default function LandingPage({ onOpenRoleModal }) {
             <div key={idx} className="rounded-2xl glass-panel border border-clinical-border overflow-hidden">
               <button
                 onClick={() => toggleFaq(idx)}
-                className="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-bold text-white hover:text-brand-primary transition-colors cursor-pointer"
+                className="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-bold text-slate-900 dark:text-white hover:text-brand-primary transition-colors cursor-pointer"
               >
-                <span>{faq.q}</span>
+                <span className="text-slate-900 dark:text-white">{faq.q}</span>
                 {faqOpen === idx ? <ChevronUp className="h-4 w-4 shrink-0 text-brand-primary" /> : <ChevronDown className="h-4 w-4 shrink-0 text-slate-500" />}
               </button>
               {faqOpen === idx && (
